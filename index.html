@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Panadero Nevado</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Corazón pixelado reutilizable -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <g id="heart" shape-rendering="crispEdges">
+        <rect x="1" y="0" width="2" height="1"/><rect x="4" y="0" width="2" height="1"/>
+        <rect x="0" y="1" width="7" height="2"/><rect x="1" y="3" width="5" height="1"/>
+        <rect x="2" y="4" width="3" height="1"/><rect x="3" y="5" width="1" height="1"/>
+      </g>
+    </defs>
+  </svg>
+
+  <main id="stage">
+    <canvas id="game" width="240" height="320" aria-label="Cocina navideña donde el panadero atrapa ingredientes"></canvas>
+
+    <div id="hud">
+      <div class="stat">Puntos <b id="score">0</b></div>
+      <div class="stat">Nivel <b id="level">1</b></div>
+      <div id="batch" title="Ingredientes de la hornada actual">
+        <i></i><i></i><i></i><i></i><i></i>
+      </div>
+      <div id="lives" title="Vidas">
+        <svg class="heart" viewBox="0 0 7 6"><use href="#heart"/></svg>
+        <svg class="heart" viewBox="0 0 7 6"><use href="#heart"/></svg>
+        <svg class="heart" viewBox="0 0 7 6"><use href="#heart"/></svg>
+      </div>
+    </div>
+
+    <button id="mute" type="button" aria-label="Activar o silenciar el sonido">Sonido: sí</button>
+
+    <section id="start" class="screen">
+      <div class="panel">
+        <h1>Panadero Nevado</h1>
+        <p>Mueve la bandeja y atrapa harina, mantequilla y azúcar.</p>
+        <p>Cada 5 ingredientes se hornea una galleta de muñeco de nieve: 10 puntos.</p>
+        <p>Si un ingrediente toca el suelo pierdes una de tus 3 vidas.</p>
+        <button id="play" class="btn" type="button">Jugar</button>
+        <p class="hint">Flechas o A / D para moverte. En el celular, arrastra el dedo.</p>
+      </div>
+    </section>
+
+    <section id="over" class="screen" hidden>
+      <div class="panel">
+        <h2>Fin de la hornada</h2>
+        <dl>
+          <div><dt>Puntos</dt><dd id="finalScore">0</dd></div>
+          <div><dt>Galletas</dt><dd id="finalCookies">0</dd></div>
+          <div><dt>Mejor</dt><dd id="best">0</dd></div>
+        </dl>
+        <button id="retry" class="btn" type="button">Reintentar</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
